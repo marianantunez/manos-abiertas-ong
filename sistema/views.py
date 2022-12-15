@@ -1,6 +1,6 @@
-from django.shortcuts import render
-
-
+from django.shortcuts import render, redirect
+from .forms import FormularioRegistro
+from django.contrib.auth import authenticate, login
 
 
 def principal(request):
@@ -8,5 +8,19 @@ def principal(request):
 
 def nosotros(request):
     return render(request,"nosotros.html")
+
+def registro(request):
+    data = {
+        'form': FormularioRegistro()
+    }
+    if request.method == 'POST':
+        formulario = FormularioRegistro(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data['username'], password=formulario.cleaned_data['password1'])
+            login(request,user)
+            return redirect(to='home')
+        data['form'] = formulario
+    return render(request,'registration/registro.html',data)
     
 
