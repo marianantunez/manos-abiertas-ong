@@ -27,6 +27,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", include("apps.noticia.urls")),
     path('registro/', registro,name='registro'),
+    path('agregar_noticias/', agregar_noticias, name='agregar'),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

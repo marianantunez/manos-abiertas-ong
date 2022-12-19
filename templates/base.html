@@ -33,19 +33,24 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mas</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <a class="dropdown-item" href="/noticias">Noticias</a>
+                        <a class="dropdown-item" href="/agregar_noticias" >Agregar noticias</a>
                     </div>
+                    
                 </li>
+                
             </ul>
 
 
             <form class="d-flex my-2 my-lg-0">
-              <button type="button" class="btn btn-outline-dark"> <a class="nav-link" href="/registro"> Registrarse </a></button>
-              <button type="button" class="btn btn-outline-dark">
+              <button type="button" class="btn btn-outline-dark me-2"> <a class="nav-link" href="/registro"> Registrarse </a></button>
+              <button type="button" class="btn btn-outline-dark me-2">
                 {% if user.is_authenticated %}
                 <a class="nav-link" href="{% url 'logout' %}">cerrar sesion</a>
                 <a class="nav-link" href="*">{{user.username}} </a>
                 {% else %}
                 <a class="nav-link" href="{% url 'login' %}">Iniciar sesion</a>
+                
+
                 {% endif %}
               </button>
             </form>
